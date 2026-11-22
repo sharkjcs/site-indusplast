@@ -1,0 +1,15 @@
+# Site estático da Indusplast (indusplastfios.com.br)
+# Projeto Docker separado ("indusplast"): não interfere em /root/sistema/servidor.
+# Escuta só em 127.0.0.1:8081; o acesso público passa pelo proxy reverso com SSL.
+name: indusplast
+
+services:
+  site:
+    image: nginx:1.27-alpine
+    container_name: indusplast-site
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
