@@ -81,5 +81,13 @@
     links.forEach(function (a, i) { a.classList.toggle('is-active', i === cur); });
   }, { passive: true });
 
+  // Voltar ao topo de uma vez: o logo do cabeçalho (que fica grudado no alto) e o botão que aparece ao descer
+  function irAoTopo(e) { if (e) e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); if (history.replaceState) history.replaceState(null, '', location.pathname); }
+  document.querySelector('.header .logo').addEventListener('click', irAoTopo);
+  var topoBtn = document.getElementById('topoBtn');
+  topoBtn.addEventListener('click', irAoTopo);
+  function mostraTopo() { topoBtn.classList.toggle('is-on', window.scrollY > 600); }
+  window.addEventListener('scroll', mostraTopo, { passive: true }); mostraTopo();
+
   document.getElementById('ano').textContent = new Date().getFullYear();
 })();
