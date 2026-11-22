@@ -69,7 +69,7 @@
       '*Produto:* ' + encodeURIComponent(f.produto.value) + '%0A' +
       '*Corte:* ' + encodeURIComponent(f.corte.value) + '%0A' +
       '*Detalhes:* ' + encodeURIComponent(f.msg.value);
-    window.open('https://wa.me/5519997166262?text=' + txt, '_blank');
+    window.open('https://wa.me/5500000000000?text=' + txt, '_blank');
   });
 
   // Menu ativo conforme a seção
