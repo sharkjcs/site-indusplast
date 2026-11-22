@@ -69,7 +69,7 @@
       '*Produto:* ' + encodeURIComponent(f.produto.value) + '%0A' +
       '*Corte:* ' + encodeURIComponent(f.corte.value) + '%0A' +
       '*Detalhes:* ' + encodeURIComponent(f.msg.value);
-    window.open('https://wa.me/5519997166262?text=' + txt, '_blank');
+    window.open('https://wa.me/5500000000000?text=' + txt, '_blank');
   });
 
   // Menu ativo conforme a seção
@@ -80,6 +80,14 @@
     secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
     links.forEach(function (a, i) { a.classList.toggle('is-active', i === cur); });
   }, { passive: true });
+
+  // Voltar ao topo de uma vez: o logo do cabeçalho (que fica grudado no alto) e o botão que aparece ao descer
+  function irAoTopo(e) { if (e) e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); if (history.replaceState) history.replaceState(null, '', location.pathname); }
+  document.querySelector('.header .logo').addEventListener('click', irAoTopo);
+  var topoBtn = document.getElementById('topoBtn');
+  topoBtn.addEventListener('click', irAoTopo);
+  function mostraTopo() { topoBtn.classList.toggle('is-on', window.scrollY > 600); }
+  window.addEventListener('scroll', mostraTopo, { passive: true }); mostraTopo();
 
   document.getElementById('ano').textContent = new Date().getFullYear();
 })();
