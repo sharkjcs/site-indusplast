@@ -1,0 +1,13 @@
+# Liga o site à rede do sistema (projeto Docker "servidor", em /root/sistema/servidor),
+# para o Caddy de lá encontrar o container pelo nome: reverse_proxy indusplast-site:80.
+# O "docker compose up -d" lê este arquivo sozinho, junto com o docker-compose.yml.
+services:
+  site:
+    networks:
+      - default
+      - servidor
+
+networks:
+  servidor:
+    name: servidor_default
+    external: true
